@@ -1,7 +1,7 @@
-import  dbconn  from '../../../db/db_conn';
-import { NextResponse, type NextRequest } from "next/server";
-import { pinata } from "../../../utils/config"
 import mongoose from "mongoose";
+import { NextResponse, type NextRequest } from "next/server";
+import dbconn from '../../../db/db_conn';
+import { pinata } from "../../../utils/config";
 
 const FileSchema = new mongoose.Schema({
     url: String,
@@ -37,9 +37,10 @@ export async function GET(request: NextRequest) {
   
       // Fetch all stored URLs
       const files = await File.find().sort({ uploadedAt: -1 });
-      const urls = files.map((file) => file.url);
+      // console.log(files);
+      // const urls = files.map((file) => file.url);
   
-      return NextResponse.json(urls, { status: 200 });
+      return NextResponse.json(files, { status: 200 });
     } catch (e) {
       console.error("Error during GET:", e);
       return NextResponse.json(

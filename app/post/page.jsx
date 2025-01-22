@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import PostForm from "@/components/PostForm";
+import PostForm from "../../components/PostForm";
 
-import ShowPost from "@/components/ShowPost";
+import ShowPost from "../../components/ShowPost";
 const Page = () => {
   const [posts, setPosts] = useState([]);
   const [displayPosts, setDisplayPosts] = useState(true);
